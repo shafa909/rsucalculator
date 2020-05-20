@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="app.js"></script> 
+</head>
+
+<body>
+  <div class="container">
+    <form name="myform" class="form-group">
+      <h4>Please fill the details</h4>
+      <hr>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="company_label">Company:</label>
+          <select id="company_name" class="form-control">
+            <option value="Amazon">Amazon</option>
+            <option value="Ibm">Ibm</option>
+            <option value="Hp">Hp</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="job_title_label">Job Title:</label>
+          <select id="job_title" class="form-control">
+            <option value="Software Engineer Manager">Software Engineer Manager</option>
+            <option value="Data Scientist">Data Scientist</option>
+            <option value="Product Manager">Product Manager</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="job_level_label">Job Level:</label>
+          <select id="job_level" class="form-control">
+            <option value="L1">L1</option>
+            <option value="L2">L2</option>
+            <option value="L3">L3</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="location_label">Location:</label>
+          <select id="location" class="form-control">
+            <option value="New York">New York</option>
+            <option value="San Francisco">San Francisco</option>
+            <option value="seattle">Seattle</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="job_category_label">Job Category:</label>
+          <select id="job_category" class="form-control">
+            <option value="se">Software Engineer</option>
+            <option value="me">Mobile engineer</option>
+            <option value="fee">Front-End Engineer</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label for="job_level_level">Offer granted date:</label>
+          <input type="date" id="date" class="form-control">
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label for="job_type_label">Job Type:</label>
+        <select id="job_type" class="form-control">
+          <option value="full_time">Full-Time</option>
+          <option value="part-time">Part-Time</option>
+          <option value="contract">Contract</option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label for="experience_label">Years of Experience:</label>
+        <input id="experience" type="text" class="form-control">
+      </select>
+    </div>
+
+    <div class="col-md-12">
+      <hr>
+    </div>
+
+    <div class="col-md-4">
+      <label for="annual_salary_label">Annual Base Salary:</label>
+      <input id="base_salary" type="text" class="form-control">
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label for="signon_bonus_label">Sign on Bonus:</label>
+    <input id="sign_on_bonus" type="text" class="form-control">
+  </select>
+</div>
+
+<div class="col-md-4">
+  <label for="annual_bonus_label">Annual Bonus:</label>
+  <input id="annual_bonus" type="text" class="form-control">
+</select>
+</div>
+
+<div class="col-md-4">
+  <label for="relocation_bonus_label">Relocation Bonus:</label>
+  <input id="relocation_bonus" type="text" class="form-control">
+</select>
+</div>
+
+<div class="col-md-12">
+  <hr>
+</div>
+
+<div class="col-md-4">
+<label for="total_rsu_label">Total RSU Value:</label>
+<input id="total_rsu_value" type="text" class="form-control" placeholder="$">
+</div>
+
+<div class="col-md-12">
+<label for="equity_schedule_label">Equity Vesting Schedule For 5 Years:</label>
+</div>
+
+<div class="col-md-2">
+<input id="first_year_equity" type="text" class="form-control"  placeholder="%">
+</div>
+
+<div class="col-md-0.3">
+<label for="addition">+</label>
+</div>
+
+<div class="col-md-2">
+<input id="second_year_equity" type="text" class="form-control"  placeholder="%">
+</div>
+
+<div class="col-md-0.5">
+<label for="addition">+</label>
+</div>
+
+<div class="col-md-2">
+<input id="third_year_equity" type="text" class="form-control"  placeholder="%">
+</div>
+
+<div class="col-md-0.5">
+<label for="addition">+</label>
+</div>
+
+<div class="col-md-2">
+<input id="forth_year_equity" type="text" class="form-control"  placeholder="%">
+</div>
+
+
+<div class="col-md-0.5">
+<label for="addition">+</label>
+</div>
+
+<div class="col-md-2">
+<input id="fifth_year_equity" type="text" class="form-control"  placeholder="%">
+</div>
+
+<div class="col-md-0.5">
+<label for="addition"> = 100% </label>
+</div>
+
+</div>
+</form>
+</div>
+
+<div class="col-md-12" style="text-align:center;">
+  <button id="showChart" type="submit" class="btn btn-primary">Calculate</button>
+</div>
+
+<div id="chart_div"> </div>
+
+</body>
+</html>
+
+

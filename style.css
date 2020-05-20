@@ -1,0 +1,21 @@
+
+
+h4 {
+	font-weight: bold;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	text-align:center;
+}
+
+#chart_div{
+	margin: 0 auto;
+	width: 700px; 
+	height: 400px;
+}
+
+
+div {
+	border-radius: 5px;
+	padding: 15px;
+}	
+
