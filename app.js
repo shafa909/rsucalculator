@@ -20,14 +20,18 @@ function drawChart() {
   var sign_on_bonus =document.getElementById("sign_on_bonus").value;
   var annual_bonus =document.getElementById("annual_bonus").value;
   var relocation_bonus =document.getElementById("relocation_bonus").value;
-  var total_rsu_value =document.getElementById("total_rsu_value").value;
+  var total_rsu_units =document.getElementById("total_rsu_unit").value;
+  var rsu_value = document.getElementById("rsu_unit_value").value;
   var first_year_equity =document.getElementById("first_year_equity").value;
   var second_year_equity =document.getElementById("second_year_equity").value;
   var third_year_equity =document.getElementById("third_year_equity").value;
   var forth_year_equity =document.getElementById("forth_year_equity").value;
   var fifth_year_equity =document.getElementById("fifth_year_equity").value;
  
- 
+  var total_rsu_value = parseInt(total_rsu_units) * parseInt(rsu_value)
+
+  console.log(parseInt(total_rsu_units))
+
   var first_year_cash = parseInt(base_salary) + parseInt(annual_bonus) + (parseInt(sign_on_bonus)/2);
   var first_year_final_equity = (parseInt(total_rsu_value)/100) * parseInt(first_year_equity)
   var second_year_cash = parseInt(base_salary) + parseInt(annual_bonus) + (parseInt(sign_on_bonus)/2);
