@@ -7,9 +7,9 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
   <link rel="stylesheet" type="text/css" href="style.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="app.js"></script> 
 </head>
 
@@ -23,8 +23,8 @@
           <label for="company_label">Company:</label>
           <select id="company_name" class="form-control">
             <option value="Amazon">Amazon</option>
-            <option value="Ibm">Ibm</option>
-            <option value="Hp">Hp</option>
+            <option value="Apple">Apple</option>
+            <option value="Google">Google</option>
           </select>
         </div>
 
@@ -118,59 +118,58 @@
 </div>
 
 <div class="col-md-4">
-<label for="total_rsu_label">Total no of RSU:</label>
-<input id="total_rsu_unit" type="text" class="form-control" placeholder="">
+  <label for="total_rsu_label">Total no of RSU:</label>
+  <input id="total_rsu_units" type="text" class="form-control" oninput="find()">
 </div>
 
-<div class="col-md-4">
-<label for="total_rsu_value_label">Single Unit Value(RSU):</label>
-<input id="rsu_unit_value" type="text" class="form-control" placeholder="$">
+<div class="col-md-6">
+  <label for="total_rsu_value_label">RSU value(Total no of RSU * Share Value): </label>
+  <input id="rsu_value" type="text" class="form-control"  readonly>
 </div>
 
 
 <div class="col-md-12">
-<label for="equity_schedule_label">Equity Vesting Schedule For 5 Years:</label>
+  <label for="equity_schedule_label">Equity Vesting Schedule For 5 Years:</label>
 </div>
 
 <div class="col-md-2">
-<input id="first_year_equity" type="text" class="form-control"  placeholder="%">
+  <input id="first_year_equity" type="text" class="form-control"  placeholder="%">
 </div>
 
 <div class="col-md-0.3">
-<label for="addition">+</label>
+  <label for="addition">+</label>
 </div>
 
 <div class="col-md-2">
-<input id="second_year_equity" type="text" class="form-control"  placeholder="%">
+  <input id="second_year_equity" type="text" class="form-control"  placeholder="%">
 </div>
 
 <div class="col-md-0.5">
-<label for="addition">+</label>
+  <label for="addition">+</label>
 </div>
 
 <div class="col-md-2">
-<input id="third_year_equity" type="text" class="form-control"  placeholder="%">
+  <input id="third_year_equity" type="text" class="form-control"  placeholder="%">
 </div>
 
 <div class="col-md-0.5">
-<label for="addition">+</label>
+  <label for="addition">+</label>
 </div>
 
 <div class="col-md-2">
-<input id="forth_year_equity" type="text" class="form-control"  placeholder="%">
+  <input id="forth_year_equity" type="text" class="form-control"  placeholder="%">
 </div>
 
-
 <div class="col-md-0.5">
-<label for="addition">+</label>
+  <label for="addition">+</label>
 </div>
 
 <div class="col-md-2">
-<input id="fifth_year_equity" type="text" class="form-control"  placeholder="%">
+  <input id="fifth_year_equity" type="text" class="form-control"  placeholder="%">
 </div>
 
 <div class="col-md-0.5">
-<label for="addition"> = 100% </label>
+  <label for="addition"> = 100% </label>
 </div>
 
 </div>
@@ -181,7 +180,40 @@
   <button id="showChart" type="submit" class="btn btn-primary">Calculate</button>
 </div>
 
-<div id="chart_div"> </div>
+
+<!-- <table class="columns">
+  <tr>
+    <td><div id="chart_div"></div></td>
+    <td><div class="tradingview-widget-container">
+      <div id="tradingview_a7043" ></div> 
+      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+      <script type="text/javascript" src="app.js"></script>
+    </div></td>
+  </tr>
+</table>
+
+ -->
+
+
+<div>
+  </br>
+</div>
+
+<div class="col-md-12" id="chart_div"> </div>
+,<div class="col-md-12">
+  </br>
+</div>
+
+<div class="col-md-12 tradingview-widget-container">
+  <div id="tradingview_a7043" ></div> 
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</div>
+
+<div>
+  </br>
+</div>
+
 
 </body>
 </html>

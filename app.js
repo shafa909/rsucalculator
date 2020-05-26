@@ -1,3 +1,4 @@
+
 google.charts.load('current', {'packages':['bar']});
 google.charts.setOnLoadCallback(showTheChart);
 
@@ -5,6 +6,33 @@ function test(argument) {
   var company_name =document.getElementById("company_name").value;
   console.log(company_name);
 }
+
+
+function find(){
+  var total_rsu_units =document.getElementById("total_rsu_units").value;
+  console.log(total_rsu_units);
+  var symbol_here =''
+  console.log( document.getElementById("company_name").value );
+
+  if(document.getElementById("company_name").value == 'Amazon'){
+    symbol_here = 'AMZN';
+  }else if( document.getElementById("company_name").value == 'Apple'){
+    symbol_here = 'AAPL' 
+  }else if(document.getElementById("company_name").value == 'Google' )
+  symbol_here = 'GOOGL' 
+
+  var url = 'https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol='+symbol_here+'&apikey=W2T872RWBUXZUCSG'
+
+  $.getJSON(url, function(data){
+    console.log("Loading...")
+    var Last_Refreshed = data["Meta Data"]["3. Last Refreshed"];
+    console.log( " LAST Refreshed : " + Last_Refreshed)
+    var latest_stock_price = data["Monthly Time Series"][Last_Refreshed]["4. close"]
+    console.log(latest_stock_price + " * "+ total_rsu_units + " = " + parseFloat(latest_stock_price)*total_rsu_units );
+    document.getElementById("rsu_value").value = parseFloat(latest_stock_price) * total_rsu_units ;
+  });
+}
+
 
 
 function drawChart() {
@@ -20,28 +48,28 @@ function drawChart() {
   var sign_on_bonus =document.getElementById("sign_on_bonus").value;
   var annual_bonus =document.getElementById("annual_bonus").value;
   var relocation_bonus =document.getElementById("relocation_bonus").value;
-  var total_rsu_units =document.getElementById("total_rsu_unit").value;
-  var rsu_value = document.getElementById("rsu_unit_value").value;
+  var total_rsu_units =document.getElementById("total_rsu_units").value;
+  var rsu_value = document.getElementById("rsu_value").value;
   var first_year_equity =document.getElementById("first_year_equity").value;
   var second_year_equity =document.getElementById("second_year_equity").value;
   var third_year_equity =document.getElementById("third_year_equity").value;
   var forth_year_equity =document.getElementById("forth_year_equity").value;
   var fifth_year_equity =document.getElementById("fifth_year_equity").value;
- 
-  var total_rsu_value = parseInt(total_rsu_units) * parseInt(rsu_value)
 
-  console.log(parseInt(total_rsu_units))
+  
+
+  console.log(rsu_value)
 
   var first_year_cash = parseInt(base_salary) + parseInt(annual_bonus) + (parseInt(sign_on_bonus)/2);
-  var first_year_final_equity = (parseInt(total_rsu_value)/100) * parseInt(first_year_equity)
+  var first_year_final_equity = (parseInt(rsu_value)/100) * parseInt(first_year_equity)
   var second_year_cash = parseInt(base_salary) + parseInt(annual_bonus) + (parseInt(sign_on_bonus)/2);
-  var second_year_final_equity = (parseInt(total_rsu_value)/100) * parseInt(second_year_equity);
+  var second_year_final_equity = (parseInt(rsu_value)/100) * parseInt(second_year_equity);
   var third_year_cash = parseInt(base_salary) + parseInt(annual_bonus) ;
-  var third_year_final_equity = (parseInt(total_rsu_value)/100) * parseInt(third_year_equity);
+  var third_year_final_equity = (parseInt(rsu_value)/100) * parseInt(third_year_equity);
   var forth_year_cash = parseInt(base_salary) + parseInt(annual_bonus) ;
-  var forth_year_final_equity = (parseInt(total_rsu_value)/100) * parseInt(forth_year_equity);
+  var forth_year_final_equity = (parseInt(rsu_value)/100) * parseInt(forth_year_equity);
   var fifth_year_cash = parseInt(base_salary) + parseInt(annual_bonus) ;
-  var fifth_year_final_equity = (parseInt(total_rsu_value)/100) * parseInt(fifth_year_equity);
+  var fifth_year_final_equity = (parseInt(rsu_value)/100) * parseInt(fifth_year_equity);
 
 
 
@@ -63,6 +91,65 @@ function drawChart() {
   };
   var chart = new google.charts.Bar(document.getElementById('chart_div'));
   chart.draw(data, google.charts.Bar.convertOptions(options));
+
+
+  if(document.getElementById("company_name").value == 'Amazon'){
+    Cmpny1 = 'Amazon'
+    Symbol1 = 'AMZN'
+    Cmpny2 = 'Apple'
+    Symbol2 = 'AAPL'
+    Cmpny3 = 'Google'
+    Symbol3 = 'GOOGL'
+
+  }else if( document.getElementById("company_name").value == 'Apple'){
+    Cmpny2 = 'Amazon'
+    Symbol2 = 'AMZN'
+    Cmpny1 = 'Apple'
+    Symbol1 = 'AAPL'
+    Cmpny3 = 'Google'
+    Symbol3 = 'GOOGL' 
+
+  }else if(document.getElementById("company_name").value == 'Google' ){
+    Cmpny3 = 'Amazon'
+    Symbol3 = 'AMZN'
+    Cmpny2 = 'Apple'
+    Symbol2 = 'AAPL'
+    Cmpny1 = 'Google'
+    Symbol1 = 'GOOGL'
+  }
+
+
+  new TradingView.MediumWidget(
+  {
+    "symbols": [
+    [
+    Cmpny1,
+    Symbol1
+    ],
+    [
+    Cmpny2,
+    Symbol2
+    ],
+    [
+    Cmpny3,
+    Symbol3
+    ]
+    ],
+    "chartOnly":false,
+    "width": 850,
+    "height": 400,
+    "locale": "in",
+    "colorTheme": "light",
+    "gridLineColor": "#F0F3FA",
+    "trendLineColor": "#2196F3",
+    "fontColor": "#787B86",
+    "underLineColor": "#E3F2FD",
+    "isTransparent": false,
+    "autosize": false,
+    "container_id": "tradingview_a7043"
+  }
+  );
+
 }
 
 
